@@ -66,6 +66,8 @@
     includeHashInUrl: false,
     // When true, the WebRTC-based mic/chat will be disabled
     disableWebRTC: false,
+    // When true, the button providing the sharing link will be hidden
+    disableSharingLink: false,
     // When true, youTube videos will synchronize
     youtube: true,
     // Ignores the following console messages, disables all messages if set to true
@@ -172,11 +174,11 @@
       var src = scripts[i].src;
       if (src && src.search(/togetherjs(-min)?.js(\?.*)?$/) !== -1) {
         baseUrl = src.replace(/\/*togetherjs(-min)?.js(\?.*)?$/, "");
-        console.warn("Detected baseUrl as", baseUrl);
+        console.info("Detected baseUrl as", baseUrl);
         break;
       } else if (src && src.search(/togetherjs-min.js(\?.*)?$/) !== -1) {
         baseUrl = src.replace(/\/*togetherjs-min.js(\?.*)?$/, "");
-        console.warn("Detected baseUrl as", baseUrl);
+        console.info("Detected baseUrl as", baseUrl);
         break;
       }
     }
@@ -327,7 +329,9 @@
       "pl": "pl-PL",
       "pl-PL": true,
       "de-DE": true,
-      "de": "de-DE"
+      "de": "de-DE",
+      "fr-FR": true,
+      "fr": "fr-FR"
     };
 
     if(lang === undefined) {

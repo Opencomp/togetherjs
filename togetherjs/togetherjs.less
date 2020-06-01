@@ -21,7 +21,7 @@
 @default-font: openSansLight, Helvetica, 'Helvetica Neue', Arial, sans-serif;
 
 // Size of the buttons (they're square):
-@button-size: 40px;
+@button-size: 35px;
 @avatar-size: 32px;
 // Note: this is also in ui.js, BUTTON_HEIGHT
 // Height of the draggable anchor at the top:
@@ -29,7 +29,9 @@
 // Extra padding on the edge of the screen:
 @side-padding: 0;
 // Background color of most elements:
-@background-color: #0095DD;
+@background-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+@background-light: #667eea;
+@background-dark: #764ba2;
 @window-background-color: #ffffff;
 @window-color: #000;
 @text-color: #000;
@@ -51,12 +53,12 @@
   font-weight: normal;
 
   a {
-    color: #0095DD;
+    color: @background-light;
     text-decoration: none;
   }
 
   a:hover {
-    color: #0095DD;
+    color: @background-dark;
     text-decoration: underline;
   }
 
@@ -110,7 +112,7 @@ button:disabled {
 }
 
 button[disabled]:hover {
-  background:#0194DB;
+  background: @background-light;
 }
 
 .togetherjs-default {
@@ -128,14 +130,14 @@ button[disabled]:hover {
 
 .togetherjs-primary {
   .button-style;
-  background:#0194DB;
+  background: @background-light;
   color: #fff;
   &.togetherjs-follow {
     cursor: pointer;
   }
 
   &:hover {
-    background:#00ACFF;
+    background: @background-light;
   }
 }
 
@@ -208,7 +210,7 @@ input.togetherjs-upload-avatar {
 
 .togetherjs-cancel {
   display: inline-block;
-  background-color: @background-color;
+  background-image: @background-color;
   border: none;
   padding:3px 0px;
   margin:0px 0px 0px;
@@ -252,10 +254,10 @@ input.togetherjs-upload-avatar {
     margin: 0 -7px 0 -7px;
     padding: 10px 4px 5px 30px;
     height: (@button-size + 8)/2;
-    background: #0095DD;
+    background-image: @background-color;
     border-radius: 4px 4px 0 0;
     position: relative;
-    border-bottom:1px solid #0071A7;
+    border-bottom:1px solid @background-dark;
   }
 
   .togetherjs-share-link {
@@ -268,17 +270,17 @@ input.togetherjs-upload-avatar {
     font-family: Monaco, sans-serif;
     margin: 7px 0px;
     &:focus {
-      border:1px solid #0095DD;
+      border:1px solid @background-light;
     }
   }
 
   header button.togetherjs-close {
     .button-reset;
-    border-left:1px solid #0071A7;
+    border-left:1px solid @background-dark;
     float: right;
     font-weight: bold;
     cursor: pointer;
-    background-color: @background-color;
+    background-image: @background-color;
     background-image: url('./images/icon-close@2x.png');
     background-position:center center;
     background-repeat: no-repeat;
@@ -317,13 +319,13 @@ input.togetherjs-upload-avatar {
     position: relative;
     width: @button-size+20;
     height: @button-size+20;
-    background-color: @background-color;
+    //background-image: @background-color;
     background-size: @button-size @button-size;
     background-repeat: no-repeat;
     background-position: center;
-    border-top:1px solid rgba(0,0,0,0.2);
+    //border-top:1px solid rgba(0,0,0,0.2);
     &:hover {
-      background-color: #0F81BF;
+      //background-color: @background-dark;
     }
   }
 
@@ -332,8 +334,12 @@ input.togetherjs-upload-avatar {
     margin: 0;
   }
 
+  #togetherjs-dock-participants {
+    display: inline-block;
+  }
+
   #togetherjs-dock-participants button.togetherjs-active {
-    background-color: #0F81BF !important;
+    background-color: @background-dark !important;
   }
 
   #togetherjs-buttons #togetherjs-share-button {
@@ -345,7 +351,7 @@ input.togetherjs-upload-avatar {
 
   #togetherjs-buttons #togetherjs-share-button.togetherjs-active {
     background-image: url('./images/button-share-active.png') !important;
-    background-color: #0F81BF;
+    background-color: @background-dark;
   }
 
   #togetherjs-buttons #togetherjs-audio-button{
@@ -359,19 +365,25 @@ input.togetherjs-upload-avatar {
 
   #togetherjs-buttons #togetherjs-audio-button.togetherjs-active {
     background-image: url('./images/button-mic-active.png') !important;
-    background-color: #0F81BF;
+    //background-color: @background-dark;
   }
 
   #togetherjs-buttons #togetherjs-chat-button{
-    background-image: url('./images/button-chat.png');
+    //background-image: url('./images/button-chat.png');
+    height: 25px;
+    position: relative;
+    top: 6px;
+    color: rgba(255,255,255,0.6) !important;
+    background-image: none;
     &:hover {
-      background-image: url('./images/button-chat-active.png');
+      //background-image: url('./images/button-chat-active.png');
+      color: rgba(255,255,255,0.75) !important;
     }
   }
 
   #togetherjs-buttons #togetherjs-chat-button.togetherjs-active {
-    background-image: url('./images/button-chat-active.png') !important;
-    background-color: #0F81BF;
+    //background-image: url('./images/button-chat-active.png') !important;
+    //background-color: @background-dark;
   }
 
   #togetherjs-dock-anchor {
@@ -388,10 +400,10 @@ input.togetherjs-upload-avatar {
   }
 
   .togetherjs-subtitle {
-    background:#0195DD;
+    background: @background-dark;
     width:280px;
     height:17px;
-    border-bottom:1px solid #0071A7;
+    border-bottom:1px solid @background-dark;
     color: rgba(255,255,255,0.5);
     font-size:12px;
     padding:7px 10px;
@@ -429,7 +441,7 @@ input.togetherjs-upload-avatar {
     /*box-shadow: inset 0 2px 2px rgba(0,0,0,0.1);*/
     font-family: openSansLight, Helvetica, sans-serif;
     &:focus {
-      border:1px solid #0095DD;
+      border:1px solid @background-light;
     }
   }
 
@@ -546,10 +558,10 @@ input.togetherjs-upload-avatar {
     margin: 0 -1px 0 -1px;
     padding: 10px 4px 5px 30px;
     height: 24px;
-    background: #0095DD;
+    background-image: @background-color;
     border-radius: 4px 4px 0 0;
     position: relative;
-    border-bottom: 1px solid #0071A7;
+    border-bottom: 1px solid @background-dark;
   }
 
   #togetherjs-feedback-form.togetherjs-modal {
@@ -966,12 +978,12 @@ input.togetherjs-upload-avatar {
     box-shadow: inset 0 2px 2px rgba(0,0,0,0.1);
     margin: -2px 0px;
     &:focus {
-      border:1px solid #0095DD;
+      border:1px solid @background-light;
     }
   }
 
   .togetherjs-self-name:focus {
-    border-bottom: 1px solid #0095DD;
+    border-bottom: 1px solid @background-light;
   }
 
 }
@@ -1137,10 +1149,8 @@ section.togetherjs-buttons .togetherjs-same-url {
 
 /* Button set */
 #togetherjs-dock {
-  position: fixed;
-  z-index: @z-index;
-  background-color: @background-color;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  //background-image: @background-color;
+  //box-shadow: 0 2px 4px rgba(0,0,0,0.5);
   @border-radius: 4px;
   @long-side: (@button-size + 9px) * 4 + 64px; // actual button-size * number of buttons + expand thingy
   @short-side: @button-size + 20px;
@@ -1151,8 +1161,8 @@ section.togetherjs-buttons .togetherjs-same-url {
     bottom: 150px;
     right: 5px;
     border-radius: @border-radius;
-    height: @long-side;
-    width: @short-side;
+    height: @short-side;
+    width: @long-side;
     #togetherjs-dock-anchor-vertical {
       display: none;
     }
@@ -1201,7 +1211,7 @@ section.togetherjs-buttons .togetherjs-same-url {
       display: inline;
     }
     #togetherjs-dock-anchor-vertical {
-      display: inline;
+      display: none;
     }
     #togetherjs-dock-anchor-horizontal {
       display: none;
@@ -1338,7 +1348,7 @@ section.togetherjs-buttons .togetherjs-same-url {
   margin: (-@start-click/2) 0 0 (-@start-click/2);
   border-radius: @start-click/2;
   border: 3px solid rgba(288, 58, 41, 1);
-  .transition(~"width 2s, height 2s, margin 2s, border 2s");
+  .transition(~"width 0.5s, height 0.5s, margin 0.5s, border 0.5s");
 
   // This class is immediately applied for the purpose of transitioning:
   &.togetherjs-clicking {
@@ -1503,7 +1513,7 @@ section.togetherjs-buttons .togetherjs-same-url {
   }
 
   .togetherjs-walkthrough-main-image {
-    width:400px;
+    //width:400px;
     height:300px;
     background:rgba(216,216,216,0.1);
     border-radius:4px;
@@ -1522,7 +1532,7 @@ section.togetherjs-buttons .togetherjs-same-url {
     height:36px;
     background-repeat:no-repeat;
     background-size:60% 60%;
-    margin-right:28px;
+    //margin-right:28px;
     margin-top:28%;
     &.togetherjs-disabled {
       cursor: default;
@@ -1637,22 +1647,22 @@ section.togetherjs-buttons .togetherjs-same-url {
 
 @-webkit-keyframes togetherjs-color-pulse {
   0% {box-shadow: none;}
-  50% {box-shadow: inset 0 0 2px #0095dd;}
+  50% {box-shadow: inset 0 0 2px @background-light;}
   100% {box-shadow: none;}
 }
 @-moz-keyframes togetherjs-color-pulse {
   0% {box-shadow: none;}
-  50% {box-shadow: inset 0 0 2px #0095dd;}
+  50% {box-shadow: inset 0 0 2px @background-light;}
   100% {box-shadow: none;}
 }
 @-o-keyframes togetherjs-color-pulse {
   0% {box-shadow: none;}
-  50% {box-shadow: inset 0 0 2px #0095dd;}
+  50% {box-shadow: inset 0 0 2px @background-light;}
   100% {box-shadow: none;}
 }
 @keyframes togetherjs-color-pulse {
   0% {box-shadow: none;}
-  50% {box-shadow: inset 0 0 2px #0095dd;}
+  50% {box-shadow: inset 0 0 2px @background-light;}
   100% {box-shadow: none;}
 }
 .togetherjs-color-pulse {
@@ -1664,22 +1674,22 @@ section.togetherjs-buttons .togetherjs-same-url {
 
 @-webkit-keyframes togetherjs-color-alert {
   0% {box-shadow: none;}
-  50% {box-shadow: 0 0 5px #0095dd;}
+  50% {box-shadow: 0 0 5px @background-light;}
   100% {box-shadow: none;}
 }
 @-moz-keyframes togetherjs-color-alert {
   0% {box-shadow: none;}
-  50% {box-shadow: 0 0 5px #0095dd;}
+  50% {box-shadow: 0 0 5px @background-light;}
   100% {box-shadow: none;}
 }
 @-o-keyframes togetherjs-color-alert {
   0% {box-shadow: none;}
-  50% {box-shadow: 0 0 5px #0095dd;}
+  50% {box-shadow: 0 0 5px @background-light;}
   100% {box-shadow: none;}
 }
 @keyframes togetherjs-color-alert {
   0% {box-shadow: none;}
-  50% {box-shadow: 0 0 5px #0095dd;}
+  50% {box-shadow: 0 0 5px @background-light;}
   100% {box-shadow: none;}
 }
 .togetherjs-color-alert {
@@ -1698,7 +1708,7 @@ section.togetherjs-buttons .togetherjs-same-url {
   width: 12px;
   height: 12px;
   left: 42px;
-  top: 46px;
+  top: 40px;
   background: url('./images/icn-gear.png');
   background-size: 12px 12px;
   background-repeat: no-repeat;
@@ -1743,9 +1753,10 @@ section.togetherjs-buttons .togetherjs-same-url {
 .togetherjs-focus {
   position: absolute;
   pointer-events: none;
-  z-index: @z-index - 1;
+  z-index: 1040;
   opacity: 0.4;
   border: 3px solid;
+  border-radius: 0.45rem;
   margin: -3px; // border should be outside the specified box
 }
 
